@@ -33,25 +33,29 @@
                             <a class="nav-link" href="#">About</a>
                         </li>
                         </ul>
+                        <button class="btn btn-outline-danger">
+                            Logout
+                        </button>
                     </div>
             @elseif($userRole === 'MANAGER')
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home
-                    <span class="visually-hidden">(current)</span>
-                    </a>
+                    <a class="nav-link @if( $page == 'HOME') active @endif" href="{{url('/home')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/manager/laporan')}}">Laporan</a>
+                    <a class="nav-link @if( $page == 'REPORT') active @endif" href="{{url('/manager/laporan')}}">Laporan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/manager/user')}}">User</a>
+                    <a class="nav-link @if( $page == 'USER') active @endif" href="{{url('/manager/user')}}">User</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/manager/setting')}}">Pengaturan</a>
+                    <a class="nav-link @if( $page == 'SETTING') active @endif" href="{{url('/manager/setting')}}">Pengaturan</a>
                 </li>
                 </ul>
+                <a class="btn btn-danger" href="{{url('/logout')}}">
+                    Logout
+                </a>
             </div>
             @elseif($userRole === 'KASIR')
             <div class="collapse navbar-collapse" id="navbarColor01">

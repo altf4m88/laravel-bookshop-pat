@@ -18,7 +18,8 @@ class ManagerController extends Controller
     {
         $userRole = Auth::user()->akses;
         return view('manager.report')
-        ->with('userRole', $userRole);
+        ->with('userRole', $userRole)
+        ->with('page', 'REPORT');
     }
 
     public function setting()
@@ -28,14 +29,16 @@ class ManagerController extends Controller
 
         return view('manager.setting')
         ->with('userRole', $userRole)
-        ->with('profile', $profile);
+        ->with('profile', $profile)
+        ->with('page', 'SETTING');
     }
 
     public function user()
     {
         $userRole = Auth::user()->akses;
         return view('manager.user')
-        ->with('userRole', $userRole);
+        ->with('userRole', $userRole)
+        ->with('page', 'USER');
     }
 
     public function createUser(Request $request)

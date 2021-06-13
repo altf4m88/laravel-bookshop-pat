@@ -16,17 +16,9 @@ class HomeController extends Controller
     {
         $userRole = Auth::user()->akses;
         return view('home')
-        ->with('userRole', $userRole);
+        ->with('userRole', $userRole)
+        ->with('page', 'HOME');
     }
-
-    public function pageInputBuku(){
-        return view('Pages.input_buku');
-    }
-
-    public function pageInputDistributor(){
-        return view('Pages.input_distributor');
-    }
-
     /**
      * Show the form for creating a new resource.
      *
