@@ -16,7 +16,7 @@ class CreateTblPasokTable extends Migration
         Schema::create('tbl_pasok', function (Blueprint $table) {
             $table->id('id_pasok');
             $table->foreignId('id_distributor');
-            $table->uuid('id_buku');
+            $table->string('id_buku');
             $table->integer('jumlah');
             $table->date('tanggal');
             $table->timestamps();
