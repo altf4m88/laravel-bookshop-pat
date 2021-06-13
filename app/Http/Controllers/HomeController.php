@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,8 +16,11 @@ class HomeController extends Controller
     public function index()
     {
         $userRole = Auth::user()->akses;
+        $profile = Setting::first();
+        
         return view('home')
         ->with('userRole', $userRole)
+        ->with('profile', $profile)
         ->with('page', 'HOME');
     }
     /**

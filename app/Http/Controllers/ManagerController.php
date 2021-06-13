@@ -126,4 +126,94 @@ class ManagerController extends Controller
             return redirect()->back()->with('failed', 'Data gagal disimpan');
         }
     }
+
+    public function invoice(Request $request)
+    {
+        $userRole = Auth::user()->akses;
+
+        return view('manager.report')
+        ->with('userRole', $userRole)
+        ->with('page', 'REPORT');
+    }
+
+    public function allSales(Request $request)
+    {
+        $userRole = Auth::user()->akses;
+
+        return view('manager.report')
+        ->with('userRole', $userRole)
+        ->with('page', 'REPORT');
+
+    }
+
+    public function bookSupplyByDistributor(Request $request)
+    {
+        $userRole = Auth::user()->akses;
+
+        return view('manager.report')
+        ->with('userRole', $userRole)
+        ->with('page', 'REPORT');
+
+    }
+
+    public function bookSupply(Request $request)
+    {
+        $userRole = Auth::user()->akses;
+
+        return view('manager.report')
+        ->with('userRole', $userRole)
+        ->with('page', 'REPORT');
+
+    }
+
+    public function booksData(Request $request)
+    {
+        $userRole = Auth::user()->akses;
+
+        return view('manager.report')
+        ->with('userRole', $userRole)
+        ->with('page', 'REPORT');
+
+    }
+
+    public function booksWriter(Request $request)
+    {
+        $userRole = Auth::user()->akses;
+
+        return view('manager.report')
+        ->with('userRole', $userRole)
+        ->with('page', 'REPORT');
+
+    }
+
+    public function popularBooks(Request $request)
+    {
+        $userRole = Auth::user()->akses;
+
+        return view('manager.report')
+        ->with('userRole', $userRole)
+        ->with('page', 'REPORT');
+
+    }
+
+    public function unpopularBooks(Request $request)
+    {
+        $userRole = Auth::user()->akses;
+
+        return view('manager.report')
+        ->with('userRole', $userRole)
+        ->with('page', 'REPORT');
+
+    }
+
+    public function salesByDate(Request $request)
+    {
+        $userRole = Auth::user()->akses;
+
+        return view('manager.report')
+        ->with('userRole', $userRole)
+        ->with('page', 'REPORT');
+
+    }
+
 }
