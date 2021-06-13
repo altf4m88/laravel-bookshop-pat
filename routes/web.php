@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\PasswordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,11 +31,15 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['auth','checkroles:ADMIN']], function(){
 
     Route::prefix('/admin')->group(function(){
-        Route::get('/input', [AdminController::class, 'input'])->name('input');
+
+        Route::prefix('/input')->group(function(){
+            Route::get('/', [AdminController::class, 'input'])->name('input');
+            Route::get('/distributor', [AdminController::class, 'distributor'])->name('distributor');
+            Route::get('/book', [AdminController::class, 'book'])->name('book');
+            Route::get('/supply', [AdminController::class, 'supply'])->name('supply');
+        });
         Route::get('/laporan', [AdminController::class, 'report'])->name('input');
     });
-    Route::get('/pageInputBuku', [HomeController::class, 'pageInputBuku'])->name('pageInputBuku');
-    Route::get('/pageInputDistributor', [HomeController::class, 'pageInputDistributor'])->name('pageInputDistributor');
 });
 
 Route::group(['middleware' => ['auth','checkroles:KASIR']], function(){
@@ -68,4 +73,6 @@ Route::group(['middleware' => ['auth','checkroles:MANAGER']], function(){
 
 Route::group(['middleware' => ['auth','checkroles:ADMIN,KASIR,MANAGER']], function(){
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/update-password', [PasswordController::class, 'changePassword'])->name('update-password');
+    Route::patch('/update-password', [PasswordController::class, 'updatePassword'])->name('update-password');
 });
