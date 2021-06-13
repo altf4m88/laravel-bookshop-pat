@@ -14,7 +14,7 @@ class CreateTblTmpPenjualanTable extends Migration
     public function up()
     {
         Schema::create('tbl_tmp_penjualan', function (Blueprint $table) {
-            $table->uuid('id_buku');
+            $table->string('id_buku', 9);
             $table->unsignedInteger('jumlah_beli');
             $table->unsignedInteger('total_harga');
             $table->timestamps();

@@ -14,7 +14,7 @@ class CreateTblBukuTable extends Migration
     public function up()
     {
         Schema::create('tbl_buku', function (Blueprint $table) {
-            $table->uuid('id_buku')->primary();
+            $table->string('id_buku', 9)->primary();
             $table->string('judul');
             $table->string('noisbn');
             $table->string('penulis');

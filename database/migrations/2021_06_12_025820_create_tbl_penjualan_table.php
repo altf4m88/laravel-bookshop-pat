@@ -14,8 +14,8 @@ class CreateTblPenjualanTable extends Migration
     public function up()
     {
         Schema::create('tbl_penjualan', function (Blueprint $table) {
-            $table->uuid('id_penjualan')->primary();
-            $table->uuid('id_buku');
+            $table->string('id_penjualan', 9)->primary();
+            $table->string('id_buku');
             $table->foreignId('id_kasir');
             $table->unsignedInteger('jumlah_beli');
             $table->integer('bayar');
