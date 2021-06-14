@@ -19,24 +19,24 @@
             @if($userRole === 'ADMIN')
                     <div class="collapse navbar-collapse" id="navbarColor01">
                         <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="/home">Home
-                            <span class="visually-hidden">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url('/admin/input')}}">Input</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url('/admin/laporan')}}">Laporan</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link @if( $page == 'HOME') active @endif" href="/home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @if( $page == 'INPUT') active @endif" href="{{url('/admin/input')}}">Input</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @if( $page == 'REPORT') active @endif" href="{{url('/admin/laporan')}}">Laporan</a>
+                            </li>
                         </ul>
-                        <button class="btn btn-outline-danger">
-                            Logout
-                        </button>
+                        <div class="d-flex">
+                            <a class="btn btn-link text-white" href="{{ url('/update-password')}}">
+                                Update Password
+                            </a>
+                            <a class="btn btn-danger" href="{{url('/logout')}}">
+                                Logout
+                            </a>
+                        </div>
                     </div>
             @elseif($userRole === 'MANAGER')
             <div class="collapse navbar-collapse" id="navbarColor01">
@@ -54,9 +54,14 @@
                     <a class="nav-link @if( $page == 'SETTING') active @endif" href="{{url('/manager/setting')}}">Pengaturan</a>
                 </li>
                 </ul>
-                <a class="btn btn-danger" href="{{url('/logout')}}">
-                    Logout
-                </a>
+                <div class="d-flex">
+                    <a class="btn btn-link text-white" href="{{ url('/update-password')}}">
+                        Update Password
+                    </a>
+                    <a class="btn btn-danger" href="{{url('/logout')}}">
+                        Logout
+                    </a>
+                </div>
             </div>
             @elseif($userRole === 'KASIR')
             <div class="collapse navbar-collapse" id="navbarColor01">

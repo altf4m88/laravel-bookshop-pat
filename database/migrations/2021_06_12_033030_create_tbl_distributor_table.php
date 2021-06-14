@@ -17,7 +17,7 @@ class CreateTblDistributorTable extends Migration
             $table->id('id_distributor');
             $table->string('nama_distributor', 100);
             $table->string('alamat');
-            $table->string('telepon', 12);
+            $table->string('telepon');
             $table->timestamps();
         });
     }

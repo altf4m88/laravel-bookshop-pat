@@ -31,12 +31,17 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['auth','checkroles:ADMIN']], function(){
 
     Route::prefix('/admin')->group(function(){
-
         Route::prefix('/input')->group(function(){
             Route::get('/', [AdminController::class, 'input'])->name('input');
             Route::get('/distributor', [AdminController::class, 'distributor'])->name('distributor');
+            Route::get('/create-distributor', [AdminController::class, 'createDistributorForm'])->name('create-distributor');
+            Route::get('/{id}/update-distributor', [AdminController::class, 'updateDistributorForm'])->name('update-distributor');
+            Route::get('/{id}/delete-distributor', [AdminController::class, 'deleteDistributor'])->name('delete-distributor');
             Route::get('/book', [AdminController::class, 'book'])->name('book');
             Route::get('/supply', [AdminController::class, 'supply'])->name('supply');
+
+            Route::post('/distributor', [AdminController::class, 'createDistributor'])->name('distributor');
+            Route::patch('/distributor', [AdminController::class, 'updateDistributor'])->name('distributor');
         });
         Route::get('/laporan', [AdminController::class, 'report'])->name('input');
     });
