@@ -179,8 +179,6 @@ class AdminController extends Controller
         ->with('page', 'REPORT');
     }
 
-    
-
     public function booksByWriterForm(Request $request)
     {
         $userRole = Auth::user()->akses;

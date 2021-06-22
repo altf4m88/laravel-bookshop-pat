@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CashierController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ManagerController;
@@ -68,8 +69,23 @@ Route::group(['middleware' => ['auth','checkroles:ADMIN']], function(){
 });
 
 Route::group(['middleware' => ['auth','checkroles:KASIR']], function(){
-    // Route::get('/pageInputBuku', [HomeController::class, 'pageInputBuku'])->name('pageInputBuku');
-    // Route::get('/pageInputDistributor', [HomeController::class, 'pageInputDistributor'])->name('pageInputDistributor');
+    Route::prefix('/cashier')->group(function(){
+
+        Route::prefix('/transaction')->group(function(){
+            Route::get('/', [CashierController::class, 'transaction'])->name('transaction');
+            Route::get('/view-transaction/{bookId}', [CashierController::class, 'viewTransaction'])->name('view-transaction');
+            Route::post('/view-transaction/{bookId}', [CashierController::class, 'createTempTransaction'])->name('create-temp-transaction');   
+            Route::post('/view-transaction/{bookId}/create', [CashierController::class, 'createTransaction'])->name('create-transaction'); 
+            Route::get('/view-transaction/print/{receipt}', [CashierController::class, 'printTransaction'])->name('print-transaction'); 
+        });
+
+        Route::prefix('/report')->group(function(){
+            Route::get('/', [CashierController::class, 'report'])->name('report');
+            Route::get('/print-invoice', [CashierController::class, 'invoice'])->name('print-invoice');
+            Route::post('/print-invoice', [CashierController::class, 'selectInvoice'])->name('print-invoice');
+            Route::get('/all-transactions', [CashierController::class, 'transactions'])->name('all-transactions');
+        });
+    });
 });
 
 Route::group(['middleware' => ['auth','checkroles:MANAGER']], function(){
