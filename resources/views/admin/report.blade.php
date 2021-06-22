@@ -63,9 +63,9 @@
               @include('admin._book_by_writer')
             @endif
         @elseif(Request::is('admin/report/popular-books'))
-            @include('admin._supply')
+            @include('admin._popular_books')
         @elseif(Request::is('admin/report/unpopular-books'))
-            @include('admin._create_distributor')
+            @include('admin._unpopular_books')
         @elseif(Request::is('admin/report/books-supply'))
             @include('admin._book_supply')
         @elseif(Request::is('admin/report/books-supply-filter'))

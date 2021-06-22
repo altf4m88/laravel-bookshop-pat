@@ -10,7 +10,9 @@ class Book extends Model
     use HasFactory;
     protected $table = "tbl_buku";
     protected $primaryKey = "id_buku";
+    protected $with = ['transactions'];
     public $incrementing = false;
+    public $keyType = 'string';
     
     public const TAX = 10;
     public const DEFAULT_STOCK = 0;
@@ -19,4 +21,9 @@ class Book extends Model
     protected $fillable = [
         'id_buku', 'judul', 'noisbn', 'penulis', 'penerbit', 'tahun', 'stok', 'harga_pokok', 'harga_jual', 'ppn', 'diskon', 'created_at', 'updated_at'
     ];
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'id_buku', 'id_buku');
+    }
 }

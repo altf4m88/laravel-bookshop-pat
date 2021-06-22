@@ -58,8 +58,8 @@ Route::group(['middleware' => ['auth','checkroles:ADMIN']], function(){
             Route::get('/books', [AdminController::class, 'allBooks'])->name('books');
             Route::get('/books-by-writer', [AdminController::class, 'booksByWriterForm'])->name('books-by-writer');
             Route::post('/books-by-writer', [AdminController::class, 'booksByWriter'])->name('books-by-writer');
-            Route::get('/popular-books', [AdminController::class, 'report'])->name('input');
-            Route::get('/unpopular-books', [AdminController::class, 'report'])->name('input');
+            Route::get('/popular-books', [AdminController::class, 'popularBooks'])->name('input');
+            Route::get('/unpopular-books', [AdminController::class, 'unpopularBooks'])->name('input');
             Route::get('/books-supply', [AdminController::class, 'getSupply'])->name('books-supply');
             Route::post('/books-supply', [AdminController::class, 'supplyByDate'])->name('books-supply');
             Route::get('/books-supply-filter', [AdminController::class, 'filterByDistributorPage'])->name('boooks-supply-filter');

@@ -1,6 +1,7 @@
+@dump(get_defined_vars())
 <div class="card mt-3">
     <div class="card-header">
-        Semua Data Buku
+        Buku Yang Tidak Pernah Terjual
     </div>
     <div class="card-body">
         <div class="d-flex">
@@ -11,15 +12,12 @@
                 <thead>
                     <tr>
                         <th scope="col">Kode Buku</th>
-                        <th scope="col">judul</th>
+                        <th scope="col">Judul</th>
                         <th scope="col">No ISBN</th>
                         <th scope="col">Penulis</th>
                         <th scope="col">Penerbit</th>
                         <th scope="col">Tahun</th>
-                        <th scope="col">Harga Pokok</th>
                         <th scope="col">Harga Jual</th>
-                        <th scope="col">Diskon</th>
-                        <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,10 +29,7 @@
                         <td>{{$book->penulis}}</td>
                         <td>{{$book->penerbit}}</td>
                         <td>{{$book->tahun}}</td>
-                        <td>{{$book->harga_pokok}}</td>
                         <td>{{$book->harga_jual}}</td>
-                        <td>{{$book->diskon}}%</td>
-                        <td><a href="#"><i class="far fa-edit"></i></a> | <a href="#"><i class="fas fa-trash-alt" style="color: red;"></i></a></td>
                     </tr>
                 @endforeach
                 </tbody>

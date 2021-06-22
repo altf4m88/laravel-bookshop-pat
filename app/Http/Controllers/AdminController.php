@@ -309,4 +309,62 @@ class AdminController extends Controller
         ->with('action', 'VIEW_DISTRIBUTOR')
         ->with('page', 'REPORT');
     }
+
+    public function popularBooks()
+    {
+        $userRole = Auth::user()->akses;
+        $books = Book::with('transactions')->get();
+
+        $booksWithTransaction = [];
+        foreach($books as $book){
+            if(count($book->transactions) > 0){
+                array_push($booksWithTransaction, $book);
+            }
+        }
+
+        foreach($booksWithTransaction as $key => $book)
+        {
+            $totalSold = 0;
+            foreach($book->transactions as $transaction){
+                $totalSold += $transaction->jumlah_beli;
+            }
+
+            $booksWithTransaction[$key]['total_sold'] = $totalSold;
+            $booksWithTransaction[$key]['total_transaction'] = count($book->transactions);
+        }
+
+        return view('admin.report')
+        ->with('userRole', $userRole)
+        ->with('books', $booksWithTransaction)
+        ->with('page', 'REPORT');
+    }
+    public function unpopularBooks()
+    {
+        $userRole = Auth::user()->akses;
+        $books = Book::with('transactions')->get();
+
+        $booksWithNoTransaction = [];
+        foreach($books as $book){
+            if(count($book->transactions) === 0){
+                array_push($booksWithNoTransaction, $book);
+            }
+        }
+
+        //WE DONT NEED THIS WASTED LOOP
+        // foreach($booksWithNoTransaction as $key => $book)
+        // {
+        //     $totalSold = 0;
+        //     foreach($book->transactions as $transaction){
+        //         $totalSold += $transaction->jumlah_beli;
+        //     }
+
+        //     $booksWithNoTransaction[$key]['total_sold'] = $totalSold;
+        //     $booksWithNoTransaction[$key]['total_transaction'] = count($book->transactions);
+        // }
+
+        return view('admin.report')
+        ->with('userRole', $userRole)
+        ->with('books', $booksWithNoTransaction)
+        ->with('page', 'REPORT');
+    }
 }
