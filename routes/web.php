@@ -32,18 +32,38 @@ Route::group(['middleware' => ['auth','checkroles:ADMIN']], function(){
 
     Route::prefix('/admin')->group(function(){
         Route::prefix('/input')->group(function(){
+
             Route::get('/', [AdminController::class, 'input'])->name('input');
             Route::get('/distributor', [AdminController::class, 'distributor'])->name('distributor');
             Route::get('/create-distributor', [AdminController::class, 'createDistributorForm'])->name('create-distributor');
             Route::get('/{id}/update-distributor', [AdminController::class, 'updateDistributorForm'])->name('update-distributor');
             Route::get('/{id}/delete-distributor', [AdminController::class, 'deleteDistributor'])->name('delete-distributor');
+
             Route::get('/book', [AdminController::class, 'book'])->name('book');
+            Route::get('/create-book', [AdminController::class, 'createBookForm'])->name('create-book');
+            Route::get('/{id}/update-book', [AdminController::class, 'updateBookForm'])->name('update-book');
+            Route::get('/{id}/delete-book', [AdminController::class, 'deleteBook'])->name('delete-book');
+
             Route::get('/supply', [AdminController::class, 'supply'])->name('supply');
 
             Route::post('/distributor', [AdminController::class, 'createDistributor'])->name('distributor');
             Route::patch('/distributor', [AdminController::class, 'updateDistributor'])->name('distributor');
+
+            Route::post('/book', [AdminController::class, 'createBook'])->name('book');
+            Route::patch('/book', [AdminController::class, 'updateBook'])->name('book');
         });
-        Route::get('/laporan', [AdminController::class, 'report'])->name('input');
+        Route::prefix('/report')->group(function(){
+            Route::get('/', [AdminController::class, 'report'])->name('input');
+            Route::get('/books', [AdminController::class, 'allBooks'])->name('books');
+            Route::get('/books-by-writer', [AdminController::class, 'booksByWriterForm'])->name('books-by-writer');
+            Route::post('/books-by-writer', [AdminController::class, 'booksByWriter'])->name('books-by-writer');
+            Route::get('/popular-books', [AdminController::class, 'report'])->name('input');
+            Route::get('/unpopular-books', [AdminController::class, 'report'])->name('input');
+            Route::get('/books-supply', [AdminController::class, 'getSupply'])->name('books-supply');
+            Route::post('/books-supply', [AdminController::class, 'supplyByDate'])->name('books-supply');
+            Route::get('/books-supply-filter', [AdminController::class, 'filterByDistributorPage'])->name('boooks-supply-filter');
+            Route::post('/books-supply-filter', [AdminController::class, 'filterByDistributor'])->name('books-supply-filter');
+        });
     });
 });
 

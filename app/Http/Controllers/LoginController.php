@@ -17,7 +17,8 @@ class LoginController extends Controller
 
     //username : super , password: stalin123
     public function auth(Request $request){
-        if (Auth::attempt($request->only('username', 'password'))){
+        if (Auth::attempt($request->only('username', 'password')))
+        {
             return redirect('home');
         }
         return redirect('login');

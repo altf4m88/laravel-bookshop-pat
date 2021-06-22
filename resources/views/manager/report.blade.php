@@ -50,7 +50,7 @@
             <li>
                 <a href="/manager/laporan/unpopular-books" class="nav-link @if(Request::is('manager/laporan/unpopular-books')) active @else text-white @endif">
                     <span class="text-white mr-1"><i class="fas fa-book-dead"></i></span>
-                    Buku Yang Tidak PernahTerjual
+                    Buku Yang Tidak Pernah Terjual
                 </a>
             </li>
             <li>

@@ -38,15 +38,21 @@
         @elseif(Request::is('admin/input/distributor'))
             @include('admin._distributor')
         @elseif(Request::is('admin/input/book'))
-            @include('admin._book')
+            @include('admin._book_input')
         @elseif(Request::is('admin/input/supply'))
             @include('admin._supply')
         @elseif(Request::is('admin/input/create-distributor'))
             @include('admin._create_distributor')
+        @elseif(Request::is('admin/input/create-book'))
+            @include('admin._create_book')
         @endif
 
         @if (isset($action) && isset($distributor) && $action == 'UPDATE')
             @include('admin._update_distributor')
+        @endif
+
+        @if (isset($action) && isset($book) && $action == 'UPDATE')
+            @include('admin._update_book')
         @endif
     </div>
 </div>

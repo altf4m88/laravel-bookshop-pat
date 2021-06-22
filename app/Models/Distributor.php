@@ -10,6 +10,7 @@ class Distributor extends Model
     use HasFactory;
     protected $table = 'tbl_distributor';
     protected $primaryKey = 'id_distributor';
+    public $incrementing = true;
 
     protected $fillable = [
         'nama_distributor',

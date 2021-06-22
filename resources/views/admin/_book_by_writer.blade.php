@@ -1,18 +1,19 @@
 <div class="card mt-3">
     <div class="card-header">
-        Semua Data Buku
+        Books By {{ $currentWriter}}
     </div>
     <div class="card-body">
         <div class="d-flex">
             <button class="btn btn-info m-1">Cetak</button>
             <button class="btn btn-success m-1">Export</button>
+            <a type="button" href="{{url('/admin/report/books-by-writer')}}" class="btn btn-primary m-1">Pilih Lainnya</a>
         </div>
         <div class="table-responsive">
             <table class="table table-hover table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Kode Buku</th>
-                        <th scope="col">judul</th>
+                        <th scope="col">Judul</th>
                         <th scope="col">No ISBN</th>
                         <th scope="col">Penulis</th>
                         <th scope="col">Penerbit</th>

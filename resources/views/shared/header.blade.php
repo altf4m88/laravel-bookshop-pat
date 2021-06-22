@@ -26,7 +26,7 @@
                                 <a class="nav-link @if( $page == 'INPUT') active @endif" href="{{url('/admin/input')}}">Input</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @if( $page == 'REPORT') active @endif" href="{{url('/admin/laporan')}}">Laporan</a>
+                                <a class="nav-link @if( $page == 'REPORT') active @endif" href="{{url('/admin/report')}}">Laporan</a>
                             </li>
                         </ul>
                         <div class="d-flex">

@@ -1,18 +1,13 @@
 <div class="card mt-3">
-    <div class="card-header">
-        Semua Data Buku
-    </div>
     <div class="card-body">
-        <div class="d-flex">
-            <button class="btn btn-info m-1">Cetak</button>
-            <button class="btn btn-success m-1">Export</button>
-        </div>
+        <h3>Form Input Buku</h3>
+        <a href="/admin/input/create-book" class="btn btn-success">Tambah Data</a>
         <div class="table-responsive">
             <table class="table table-hover table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Kode Buku</th>
-                        <th scope="col">judul</th>
+                        <th scope="col">Judul</th>
                         <th scope="col">No ISBN</th>
                         <th scope="col">Penulis</th>
                         <th scope="col">Penerbit</th>
@@ -35,7 +30,10 @@
                         <td>{{$book->harga_pokok}}</td>
                         <td>{{$book->harga_jual}}</td>
                         <td>{{$book->diskon}}%</td>
-                        <td><a href="#"><i class="far fa-edit"></i></a> | <a href="#"><i class="fas fa-trash-alt" style="color: red;"></i></a></td>
+                        <td>
+                            <a href="{{url('admin/input/'.$book->id_buku.'/update-book')}}"><i class="far fa-edit"></i></a> | 
+                            <a href="{{url('admin/input/'.$book->id_buku.'/delete-book')}}"><i class="fas fa-trash-alt" style="color: red;"></i></a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

@@ -12,7 +12,8 @@ class PasswordController extends Controller
         $userRole = Auth::user()->akses;
         
         return view('shared.change_password')
-        ->with('userRole', $userRole);
+        ->with('userRole', $userRole)
+        ->with('page', 'PASSWORD');
     }
 
     public function updatePassword(Request $request){
