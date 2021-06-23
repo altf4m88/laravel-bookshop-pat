@@ -67,7 +67,10 @@ Route::group(['middleware' => ['auth','checkroles:ADMIN']], function(){
             Route::post('/books-supply-filter', [AdminController::class, 'filterByDistributor'])->name('books-supply-filter');
 
             //EXCEL FUNCTIONALITY
-            
+            Route::get('/export-all', [AdminController::class, 'exportAll'])->name('export-all');
+            Route::get('/export-popular', [AdminController::class, 'exportPopular'])->name('export-popular');
+            Route::get('/export-unpopular', [AdminController::class, 'exportUnpopular'])->name('export-unpopular');
+            Route::get('/export-supply', [AdminController::class, 'exportSupply'])->name('export-supply');
         });
     });
 });

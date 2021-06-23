@@ -21,9 +21,6 @@
                     </thead>
                     <tbody>
                         @foreach ($supplies as $book)    
-                        @if(!isset($supply['book']))
-                            @continue
-                        @endif
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $book['book']['judul']}}</td>

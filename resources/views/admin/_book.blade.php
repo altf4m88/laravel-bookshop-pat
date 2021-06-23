@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
         <div class="d-flex">
-            <button class="btn btn-success m-1">Export</button>
+            <a href="{{url('admin/report/export-all')}}" class="btn btn-success m-1">Export</a>
         </div>
         <div class="table-responsive">
             <table class="table table-hover table-striped">

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\AllBooks;
+use App\Exports\AllSupply;
+use App\Exports\PopularBooks;
+use App\Exports\UnpopularBooks;
 use App\Models\Book;
 use App\Models\Supply;
 use App\Models\Distributor;
@@ -399,5 +403,25 @@ class AdminController extends Controller
         ->with('userRole', $userRole)
         ->with('books', $booksWithNoTransaction)
         ->with('page', 'REPORT');
+    }
+
+    public function exportAll()
+    {
+        return Excel::download(new AllBooks, 'semua-buku.xlsx');
+    }
+
+    public function exportPopular()
+    {
+        return Excel::download(new PopularBooks, 'buku-terjual.xlsx');
+    }
+
+    public function exportUnpopular()
+    {
+        return Excel::download(new UnpopularBooks, 'buku-tidak-terjual.xlsx');
+    }
+    
+    public function exportSupply()
+    {
+        return Excel::download(new AllSupply, 'semua-pasok.xlsx');
     }
 }
