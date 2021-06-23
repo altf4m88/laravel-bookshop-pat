@@ -27,3 +27,5 @@
 <h1>LaravelBookshop</h1>
 
 <h4>a rather messy app ain't it? 3 role with unclear privilege sounds like a disaster, i just follow order ✌️</h4>
+
+<h4>couldn't find a better name for this amateur stuff...</h4>
