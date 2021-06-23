@@ -19,7 +19,6 @@
                         <th scope="col">Harga Pokok</th>
                         <th scope="col">Harga Jual</th>
                         <th scope="col">Diskon</th>
-                        <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,7 +33,6 @@
                         <td>{{$book->harga_pokok}}</td>
                         <td>{{$book->harga_jual}}</td>
                         <td>{{$book->diskon}}%</td>
-                        <td><a href="#"><i class="far fa-edit"></i></a> | <a href="#"><i class="fas fa-trash-alt" style="color: red;"></i></a></td>
                     </tr>
                 @endforeach
                 </tbody>
