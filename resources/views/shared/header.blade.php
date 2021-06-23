@@ -46,7 +46,7 @@
                         <a class="nav-link @if( $page == 'HOME') active @endif" href="{{url('/home')}}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if( $page == 'REPORT') active @endif" href="{{url('/manager/laporan')}}">Laporan</a>
+                        <a class="nav-link @if( $page == 'REPORT') active @endif" href="{{url('/manager/report')}}">Laporan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @if( $page == 'USER') active @endif" href="{{url('/manager/user')}}">User</a>

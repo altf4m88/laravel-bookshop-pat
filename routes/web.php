@@ -91,17 +91,27 @@ Route::group(['middleware' => ['auth','checkroles:KASIR']], function(){
 Route::group(['middleware' => ['auth','checkroles:MANAGER']], function(){
     Route::prefix('/manager')->group(function(){
 
-        Route::prefix('/laporan')->group(function(){
+        Route::prefix('/report')->group(function(){
             Route::get('/', [ManagerController::class, 'report'])->name('report');
-            Route::get('/invoice', [ManagerController::class, 'invoice'])->name('invoice');
-            Route::get('/all-sales', [ManagerController::class, 'allSales'])->name('all-sales');
+
             Route::get('/supply-by-distributor', [ManagerController::class, 'bookSupplyByDistributor'])->name('supply-by-distributor');
+            Route::post('/supply-by-distributor', [ManagerController::class, 'filterByDistributor'])->name('supply-by-distributor');
             Route::get('/supply', [ManagerController::class, 'bookSupply'])->name('supply');
+            Route::post('/supply', [ManagerController::class, 'supplyByDate'])->name('supply');
             Route::get('/books-data', [ManagerController::class, 'booksData'])->name('books-data');
             Route::get('/books-by-writer', [ManagerController::class, 'booksWriter'])->name('books-by-writer');
+            Route::post('/books-by-writer', [ManagerController::class, 'booksByWriter'])->name('books-by-writer');
             Route::get('/popular-books', [ManagerController::class, 'popularBooks'])->name('popular-books');
             Route::get('/unpopular-books', [ManagerController::class, 'unpopularBooks'])->name('unpopular-books');
-            Route::get('/sales-by-date', [ManagerController::class, 'salesByDate'])->name('sales-by-date');
+
+            Route::get('/invoice', [ManagerController::class, 'invoice'])->name('invoice');
+            Route::post('/invoice', [ManagerController::class, 'selectInvoice'])->name('print-invoice');
+            Route::get('/invoice/{receipt}', [CashierController::class, 'printTransaction'])->name('print-transaction'); 
+            Route::get('/transactions', [ManagerController::class, 'transactions'])->name('all-transactions');
+
+            Route::get('/{id}/update-book', [ManagerController::class, 'updateBookForm'])->name('update-book');
+            Route::get('/{id}/delete-book', [ManagerController::class, 'deleteBook'])->name('delete-book');
+            Route::patch('/book', [AdminController::class, 'updateBook'])->name('book');
         });
 
         Route::get('/user', [ManagerController::class, 'user'])->name('user');
