@@ -210,8 +210,40 @@ class AdminController extends Controller
     public function supply()
     {
         $userRole = Auth::user()->akses;
+        $books = Book::all();
+        $distributors = Distributor::all();
 
         return view('admin.input')
+        ->with('userRole', $userRole)
+        ->with('books', $books)
+        ->with('distributors', $distributors)
+        ->with('page', 'INPUT');
+    }
+
+    public function inputSupply(Request $request)
+    {
+        $userRole = Auth::user()->akses;
+        $book = Book::findOrFail($request->book_id);
+
+        $supply = new Supply;
+
+        $supply->id_distributor = $request->distributor_id;
+        $supply->id_buku = $request->book_id;
+        $supply->jumlah = $request->jumlah;
+        $supply->tanggal = $request->tanggal;
+
+        $supply->save();
+
+        $plusStok = $book->stok + $request->jumlah;
+
+        $book->update([
+            'stok' => $plusStok,
+        ]);
+
+        $book->save();
+
+        return redirect()
+        ->route('books-supply')
         ->with('userRole', $userRole)
         ->with('page', 'INPUT');
     }

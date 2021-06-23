@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth','checkroles:ADMIN']], function(){
             Route::get('/{id}/delete-book', [AdminController::class, 'deleteBook'])->name('delete-book');
 
             Route::get('/supply', [AdminController::class, 'supply'])->name('supply');
+            Route::post('/create-supply', [AdminController::class, 'inputSupply'])->name('supply');
 
             Route::post('/distributor', [AdminController::class, 'createDistributor'])->name('distributor');
             Route::patch('/distributor', [AdminController::class, 'updateDistributor'])->name('distributor');
