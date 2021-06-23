@@ -65,6 +65,9 @@ Route::group(['middleware' => ['auth','checkroles:ADMIN']], function(){
             Route::post('/books-supply', [AdminController::class, 'supplyByDate'])->name('books-supply');
             Route::get('/books-supply-filter', [AdminController::class, 'filterByDistributorPage'])->name('boooks-supply-filter');
             Route::post('/books-supply-filter', [AdminController::class, 'filterByDistributor'])->name('books-supply-filter');
+
+            //EXCEL FUNCTIONALITY
+            
         });
     });
 });

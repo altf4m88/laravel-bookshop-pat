@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Faker\Factory as Faker;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {

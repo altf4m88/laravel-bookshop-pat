@@ -1,6 +1,6 @@
 <div class="card card-primary card-outline mt-3">
     <div class="card-header">
-        Tambah Buku
+        Input Pasok
     </div>
     <div class="card-body">
       
