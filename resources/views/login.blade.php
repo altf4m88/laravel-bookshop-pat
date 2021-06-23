@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/jpg" href="{{asset('favicon/book.png')}}"/>
 </head>
 <body class="bg-primary h-100 align-items-center">
     <div class="container w-100 h-100 d-flex justify-content-center align-items-center my-5">
