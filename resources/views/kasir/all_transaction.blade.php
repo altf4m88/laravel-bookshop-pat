@@ -9,7 +9,7 @@
 
                     <div class="my-4">
                         <a href="{{url('cashier/report/print-invoice')}}" type="button" class="btn btn-primary">Cetak</a>
-                        <button type="button" class="btn btn-success">Export Excel</button>
+                        <a href="{{url('cashier/report/export-sales')}}" type="button" class="btn btn-success">Export Excel</a>
                     </div>
 
                     <table id="table">

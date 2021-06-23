@@ -12,7 +12,7 @@
             <br>
             <button type="submit" name="btnTampil" class="form-group btn btn-info" >Tampilkan</button>
             <a type="button" href="{{url('/manager/report/supply')}}" class="form-group btn btn-primary">Refresh</a>
-            <a target="_blank" class="btn btn-success" href="laporan/lap_filter_tgl_penjualan.php?tglin=2021-06-01&amp;tglout=2021-06-13" role="button">Cetak</a>
+            <a href="{{url('manager/report/export-supply')}}" class="btn btn-success m-1">Export</a>
         </form>
     </div>
 </div>

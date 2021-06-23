@@ -32,6 +32,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['auth','checkroles:ADMIN']], function(){
 
     Route::prefix('/admin')->group(function(){
+
         Route::prefix('/input')->group(function(){
 
             Route::get('/', [AdminController::class, 'input'])->name('input');
@@ -54,6 +55,7 @@ Route::group(['middleware' => ['auth','checkroles:ADMIN']], function(){
             Route::post('/book', [AdminController::class, 'createBook'])->name('book');
             Route::patch('/book', [AdminController::class, 'updateBook'])->name('book');
         });
+
         Route::prefix('/report')->group(function(){
             Route::get('/', [AdminController::class, 'report'])->name('input');
             Route::get('/books', [AdminController::class, 'allBooks'])->name('books');
@@ -72,6 +74,7 @@ Route::group(['middleware' => ['auth','checkroles:ADMIN']], function(){
             Route::get('/export-unpopular', [AdminController::class, 'exportUnpopular'])->name('export-unpopular');
             Route::get('/export-supply', [AdminController::class, 'exportSupply'])->name('export-supply');
         });
+        
     });
 });
 
@@ -91,6 +94,8 @@ Route::group(['middleware' => ['auth','checkroles:KASIR']], function(){
             Route::get('/print-invoice', [CashierController::class, 'invoice'])->name('print-invoice');
             Route::post('/print-invoice', [CashierController::class, 'selectInvoice'])->name('print-invoice');
             Route::get('/all-transactions', [CashierController::class, 'transactions'])->name('all-transactions');
+
+            Route::get('/export-sales', [CashierController::class, 'exportSales'])->name('export-sales');
         });
     });
 });
@@ -118,7 +123,13 @@ Route::group(['middleware' => ['auth','checkroles:MANAGER']], function(){
 
             Route::get('/{id}/update-book', [ManagerController::class, 'updateBookForm'])->name('update-book');
             Route::get('/{id}/delete-book', [ManagerController::class, 'deleteBook'])->name('delete-book');
-            Route::patch('/book', [AdminController::class, 'updateBook'])->name('book');
+            Route::patch('/book', [ManagerController::class, 'updateBook'])->name('book');
+
+            Route::get('/export-sales', [ManagerController::class, 'exportSales'])->name('export-sales');
+            Route::get('/export-all', [ManagerController::class, 'exportAll'])->name('export-all');
+            Route::get('/export-popular', [ManagerController::class, 'exportPopular'])->name('export-popular');
+            Route::get('/export-unpopular', [ManagerController::class, 'exportUnpopular'])->name('export-unpopular');
+            Route::get('/export-supply', [ManagerController::class, 'exportSupply'])->name('export-supply');
         });
 
         Route::get('/user', [ManagerController::class, 'user'])->name('user');

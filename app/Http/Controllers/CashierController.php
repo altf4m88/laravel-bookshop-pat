@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Sales;
+use App\Exports\UnpopularBooks;
 use App\Models\Book;
 use App\Models\Setting;
 use App\Models\TempTransaction;
@@ -10,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Faker\Factory as Faker;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CashierController extends Controller
 {
@@ -151,5 +154,9 @@ class CashierController extends Controller
         ->with('receipt', $invoice)
         ->with('book', $book)
         ->with('page', 'REPORT');
+    }
+
+    public function exportSales(){
+        return Excel::download(new Sales, 'penjualan.xlsx');
     }
 }

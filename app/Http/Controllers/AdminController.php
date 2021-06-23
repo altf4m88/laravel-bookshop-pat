@@ -268,14 +268,12 @@ class AdminController extends Controller
         $userRole = Auth::user()->akses;
         $dates = Supply::orderBy('tanggal', 'desc')->get()->pluck('tanggal');
 
-
         $dataSupply = [];
         foreach($supplies as $key => $supply){
             $supply['distributor'] = $supply->distributor;
             $supply['book'] = $supply->book;
             $dataSupply[$key] = $supply;
         }
-
 
         return view('admin.report')
         ->with('supplies', $dataSupply)

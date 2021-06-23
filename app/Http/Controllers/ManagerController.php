@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\AllBooks;
+use App\Exports\AllSupply;
+use App\Exports\PopularBooks;
+use App\Exports\Sales;
+use App\Exports\UnpopularBooks;
 use App\Models\Book;
 use App\Models\Distributor;
 use App\Models\Setting;
@@ -15,6 +20,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Input\Input;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ManagerController extends Controller
 {
@@ -362,6 +368,30 @@ class ManagerController extends Controller
         ->with('userRole', $userRole)
         ->with('page', 'REPORT');
 
+    }
+
+    public function exportSales(){
+        return Excel::download(new Sales, 'penjualan.xlsx');
+    }
+
+    public function exportAll()
+    {
+        return Excel::download(new AllBooks, 'semua-buku.xlsx');
+    }
+
+    public function exportPopular()
+    {
+        return Excel::download(new PopularBooks, 'buku-terjual.xlsx');
+    }
+
+    public function exportUnpopular()
+    {
+        return Excel::download(new UnpopularBooks, 'buku-tidak-terjual.xlsx');
+    }
+    
+    public function exportSupply()
+    {
+        return Excel::download(new AllSupply, 'semua-pasok.xlsx');
     }
 
 }
