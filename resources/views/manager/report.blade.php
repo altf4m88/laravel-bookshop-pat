@@ -64,7 +64,13 @@
     </div>
     <div class="container mt-3">
         @if(Request::is('manager/report'))
-            utama
+            <div class="card border-success mb-3">
+                <div class="card-header">Laporan Manager</div>
+                    <div class="card-body">
+                    <h4 class="card-title">Laporan</h4>
+                    <p class="card-text">Pilih salah satu menu di samping kiri.</p>
+                </div>
+            </div>
         @elseif(Request::is('manager/report/invoice'))
             @if(isset($action) && $action == 'SELECT')
                 @include('manager._invoice_preview')

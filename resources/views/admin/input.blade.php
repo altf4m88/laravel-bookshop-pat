@@ -34,7 +34,13 @@
     </div>
     <div class="container mt-3">
         @if(Request::is('admin/input'))
-            utama
+        <div class="card border-success mb-3">
+            <div class="card-header">Input Admin</div>
+                <div class="card-body">
+                <h4 class="card-title">Input</h4>
+                <p class="card-text">Pilih salah satu menu di samping kiri.</p>
+            </div>
+        </div>
         @elseif(Request::is('admin/input/distributor'))
             @include('admin._distributor')
         @elseif(Request::is('admin/input/book'))

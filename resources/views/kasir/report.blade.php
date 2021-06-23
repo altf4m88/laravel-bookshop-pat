@@ -29,7 +29,13 @@
       <div class="container mt-3">
 
         @if(Request::is('cashier/report'))
-        utama
+        <div class="card border-success mb-3">
+          <div class="card-header">Laporan Kasir</div>
+              <div class="card-body">
+              <h4 class="card-title">Laporan</h4>
+              <p class="card-text">Pilih salah satu menu di samping kiri.</p>
+          </div>
+        </div>
         @elseif(Request::is('cashier/report/print-invoice'))
             @if(isset($action) && $action == 'SELECT')
               @include('kasir.select_invoice')

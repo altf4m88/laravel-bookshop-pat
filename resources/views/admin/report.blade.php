@@ -53,7 +53,13 @@
       <div class="container mt-3">
 
         @if(Request::is('admin/report'))
-        utama
+          <div class="card border-success mb-3">
+            <div class="card-header">Laporan Admin</div>
+                <div class="card-body">
+                <h4 class="card-title">Laporan</h4>
+                <p class="card-text">Pilih salah satu menu di samping kiri.</p>
+            </div>
+          </div>
         @elseif(Request::is('admin/report/books'))
             @include('admin._book')
         @elseif(Request::is('admin/report/books-by-writer'))

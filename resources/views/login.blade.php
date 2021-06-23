@@ -21,15 +21,6 @@
                         <label for="password">Password</label>
                         <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                     </div>
-                    <div class="form-group">
-                        <label for="akses">Akses Sebagai:</label>
-                        <select class="form-select form-control text-dark" id="akses" name="akses" required>
-                            <option value="KASIR">Kasir</option>
-                            <option value="ADMIN">Manager</option>
-                            <option value="MANAGER">Admin</option>
-                            <option value="SUPER">Super</option>
-                        </select>
-                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
