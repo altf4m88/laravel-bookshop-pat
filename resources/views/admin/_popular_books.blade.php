@@ -1,4 +1,3 @@
-@dump(get_defined_vars())
 <div class="card mt-3">
     <div class="card-header">
         Buku Yang Sering Terjual

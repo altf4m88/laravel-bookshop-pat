@@ -63,7 +63,6 @@
         <hr>
     </div>
     <div class="container mt-3">
-        @dump(get_defined_vars())
         @if(Request::is('manager/report'))
             utama
         @elseif(Request::is('manager/report/invoice'))

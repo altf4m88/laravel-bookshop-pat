@@ -1,4 +1,3 @@
-@dump(get_defined_vars())
 <div class="form-group form-inline text-right">
     <div class="clearfix"></div>
     <div class="controls">

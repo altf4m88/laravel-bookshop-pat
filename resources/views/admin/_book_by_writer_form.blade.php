@@ -1,4 +1,3 @@
-@dump(get_defined_vars())
 <div class="card text-center">
     <div class="card-header">
         Filter By Writer
